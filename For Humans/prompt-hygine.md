@@ -11,4 +11,4 @@ Advance prompt tips
 Some tips for more effective prompting
 1. Keep language clear, simple , and specific
 2. Break it down. For complex tasks, split them into smaller prompts - that's easier to troubleshoot. If you do combine steps, use clear instructions like first do X, then do Y
-3. Rephrase, rephrase, and then move on. If the AI doesn't "get it," try saying it differently - as you would with a person
+3. Rephrase, rephrase, and then move on. If the AI doesn't "get it," try saying it differently - as you would with a person.
