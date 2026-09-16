@@ -2,7 +2,7 @@
 
 ## Problem Statement
 
-This project benchmarks software architecture patterns by implementing the same business workflow in multiple architectural styles and measuring the trade-offs under equal conditions.
+This project collect data points on different architecture patterns by implementing tbe architecture pattern and document the quantitative and qualitative data points.
 
 The first benchmark compares a modular monolith against microservices for an e-commerce checkout workflow.
 
