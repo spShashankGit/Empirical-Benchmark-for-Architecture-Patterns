@@ -1,0 +1,16 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/domain" },
+    { "path": "packages/capabilities" },
+    { "path": "packages/contracts" },
+    { "path": "packages/testkit" },
+    { "path": "packages/harness" },
+    { "path": "implementations/modular-monolith" },
+    { "path": "implementations/microservices/cart" },
+    { "path": "implementations/microservices/inventory" },
+    { "path": "implementations/microservices/payment" },
+    { "path": "implementations/microservices/order" },
+    { "path": "implementations/microservices/checkout-api" }
+  ]
+}

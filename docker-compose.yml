@@ -1,0 +1,71 @@
+# Repeatable benchmark runtime.
+#
+# Resource budgets are the important part. The monolith gets 2.0 CPUs and 1G of
+# memory; the five services get 0.4 CPUs and 200M each, summing to the same
+# 2.0 CPUs and 1G. Comparing one unconstrained process against five
+# unconstrained ones measures the machine, not the architecture.
+#
+#   docker compose up monolith
+#   docker compose up cart inventory payment order checkout-api
+#
+# Run only one architecture at a time so they never compete for the same cores.
+
+x-service: &service
+  build: .
+  restart: "no"
+
+services:
+  monolith:
+    <<: *service
+    environment:
+      SERVICE_ENTRY: implementations/modular-monolith/dist/server.js
+      PORT: 3000
+    ports: ["3000:3000"]
+    cpus: 2.0
+    mem_limit: 1g
+
+  cart:
+    <<: *service
+    environment:
+      SERVICE_ENTRY: implementations/microservices/cart/dist/server.js
+      PORT: 4001
+    cpus: 0.4
+    mem_limit: 200m
+
+  inventory:
+    <<: *service
+    environment:
+      SERVICE_ENTRY: implementations/microservices/inventory/dist/server.js
+      PORT: 4002
+    cpus: 0.4
+    mem_limit: 200m
+
+  payment:
+    <<: *service
+    environment:
+      SERVICE_ENTRY: implementations/microservices/payment/dist/server.js
+      PORT: 4003
+    cpus: 0.4
+    mem_limit: 200m
+
+  order:
+    <<: *service
+    environment:
+      SERVICE_ENTRY: implementations/microservices/order/dist/server.js
+      PORT: 4004
+    cpus: 0.4
+    mem_limit: 200m
+
+  checkout-api:
+    <<: *service
+    environment:
+      SERVICE_ENTRY: implementations/microservices/checkout-api/dist/server.js
+      PORT: 4000
+      CART_URL: http://cart:4001
+      INVENTORY_URL: http://inventory:4002
+      PAYMENT_URL: http://payment:4003
+      ORDER_URL: http://order:4004
+    ports: ["4000:4000"]
+    depends_on: [cart, inventory, payment, order]
+    cpus: 0.4
+    mem_limit: 200m

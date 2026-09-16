@@ -1,0 +1,14 @@
+{
+  "name": "@arch-bench/modular-monolith",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/server.js",
+  "dependencies": {
+    "@arch-bench/domain": "*",
+    "@arch-bench/contracts": "*",
+    "@arch-bench/testkit": "*",
+    "@arch-bench/capabilities": "*",
+    "fastify": "^5.2.0"
+  }
+}

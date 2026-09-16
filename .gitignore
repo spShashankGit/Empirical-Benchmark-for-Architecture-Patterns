@@ -216,3 +216,17 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# Node / TypeScript
+# ---------------------------------------------------------------------------
+node_modules/
+dist/
+*.tsbuildinfo
+npm-debug.log*
+.npm/
+
+# Benchmark output. Raw result files are generated per run; publishable results
+# are committed deliberately under docs/, not swept in by accident.
+results/*.json
+!results/.gitkeep

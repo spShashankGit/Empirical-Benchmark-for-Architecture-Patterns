@@ -1,0 +1,28 @@
+{
+  "name": "arch-bench",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Empirical benchmark for software architecture patterns",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "workspaces": [
+    "packages/*",
+    "implementations/modular-monolith",
+    "implementations/microservices/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "tsc -b --clean",
+    "test": "vitest run",
+    "start:monolith": "node implementations/modular-monolith/dist/server.js",
+    "start:microservices": "node scripts/start-microservices.mjs",
+    "bench": "node packages/harness/dist/cli.js",
+    "report": "node packages/harness/dist/report-cli.js"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "typescript": "^5.7.2",
+    "vitest": "^5.0.1"
+  }
+}
